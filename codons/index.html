@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Codon-based evolution simulator</title>
+    <meta name="description" content="DNA codons are used for a rudimentary programming-language-like thing to ideally simulate evolution."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="../../sheep3.css">
+    <link rel="stylesheet" href="./main.css">
+    <script src="../../sheep3.js" charset="utf-8"></script>
+    <script src="./grid-renderer.js" charset="utf-8"></script>
+    <script src="./cell.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <canvas id="grid"></canvas>
+    <script type="text/javascript">
+      const grid = [];
+      for (let i = 20; i--;) {
+        const arr = [];
+        for (let j = 20; j--;) arr.push(new Cell());
+        grid.push(arr);
+      }
+      const renderer = new GridRenderer(document.getElementById('grid'), grid);
+      renderer.resize();
+      document.addEventListener('resize', e => {
+        renderer.resize();
+      });
+      renderer.render();
+    </script>
+  </body>
+</html>
